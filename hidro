@@ -1,0 +1,24 @@
+import numpy as np
+from matplotlib import pyplot as plt
+from matplotlib.animation import FuncAnimation
+plt.style.use('seaborn-pastel')
+
+
+fig = plt.figure()
+ax = plt.axes(xlim=(1990, 2024), ylim=(20, 40))
+line, = ax.plot([], [], lw=3)
+
+def init():
+    line.set_data([], [])
+    return line,
+def animate(i):
+    x = np.linspace(0, 4, 1000)
+    y = 0.3673x-706.96
+    line.set_data(x, y)
+    return line,
+
+anim = FuncAnimation(fig, animate, init_func=init,
+                               frames=200, interval=20, blit=True)
+
+
+anim.save('hidro.gif', writer='capimanito')
